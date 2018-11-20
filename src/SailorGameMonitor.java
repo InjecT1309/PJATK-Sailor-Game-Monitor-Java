@@ -15,9 +15,8 @@ public class SailorGameMonitor {
         HttpServer server = HttpServer.create(new InetSocketAddress(ip, port), 0);
         server.createContext("/monitor", e -> {
             BufferedReader read = new BufferedReader(new InputStreamReader(e.getRequestBody()));
-//            System.out.println(e.getRequestHeaders().entrySet());
             System.out.println(read.readLine());
-            String response = "OK";
+            String response = "Monitor recieved the message";
             e.sendResponseHeaders(200, response.length());
             OutputStream os = e.getResponseBody();
             os.write(response.getBytes());
